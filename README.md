@@ -10,11 +10,12 @@
 
 ### Note 2: Images in the image folder are dependent on the current Automapper naming convention in Genie. The naming convention is as follows:
 
+zoneid.jpg (example **"1.jpg"**): If no image containing a roomID is found, the plugin will default to whatever image is associated with the zone. For example, if you are in the Crossing in "Zone 1" per Genie's Automapper, the plugin will load the default 1.jpg image for the zone. 
+
+zoneid_roomid.jpg (example **"1_42.jpg"**): If an image is found with a matching zone and room ID per Automapper naming schema, it will load that specific room image into the plugin. As an example, 1_42.jpg is Zone 1 (The Crossing), Room 42 (The room directly outside the Crossing Bank). 
+
 ### Note 3: You can add your own images to the \Images using the same naming convention! Images should be saved as a .jpg with 512X512 pixels. The plugin window is sized to show images at 512px X 512px. 
 
-### zoneid.jpg (example **"1.jpg"**): If no image containing a roomID is found, the plugin will default to whatever image is associated with the zone. For example, if you are in the Crossing in "Zone 1" per Genie's Automapper, the plugin will load the default 1.jpg image for the zone. 
-### zoneid_roomid.jpg (example **"1_42.jpg"**): If an image is found with a matching zone and room ID per Automapper naming schema, it will load that specific room image into the plugin. As an example, 1_42.jpg is Zone 1 (The Crossing), Room 42 (The room directly outside the Crossing Bank). 
-  
 ## Basic Commands to use in Genie:
 
 /landscape : Returns a simple confirmation that the plugin is working. 
