@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,7 +21,6 @@ namespace Landscape4Genie
 {
     public partial class MainForm : Form
     {
-        Timer Clock = new Timer();
         string title_Connection;
 
         string imageFolder;
@@ -98,7 +98,7 @@ namespace Landscape4Genie
                 LoadDefaultImage();
             }
 
-            //If connected to game, update every X seconds the current Zone and Room ID
+            //If connected to game, update called from Plugin when Zone ID and Room ID change
             else if (Landscape._host.get_Variable("connected") == "1")
             {
                 this.Text = title_Connection + ": Connected";
@@ -116,34 +116,59 @@ namespace Landscape4Genie
 
                     //Find the Genie Automapper Name for the Zone
                     string truncate_name = trackList.Find(trackList => trackList.map_index == Landscape._host.get_Variable("zoneid"))?.map_name.ToString();
+                    
+                    //Truncate Name so it fits in label on MainForm
                     truncate_name.Truncate(30);
                     label_mapName.Text = truncate_name; 
                                       
                     if (label_mapName.Text == null) label_mapName.Text = "Map Name (not found)"; 
 
-                    //If a DR-art image is found in XML, load it from the url play.net
+                    //If a DR-art image is found in XML stream from game, load it from the url play.net
                     if (image_DRArt != null)
                     {
-                        if (loaded_URL == false)
-                        {
-                            string url_DR_art = "https://www.play.net/bfe/DR-art/" + image_DRArt;
 
-                            if (url_DR_art != null)
+                        //Check to see if image from URL is stored locally so it doesn't need to be downloaded
+                        int temp_Index = Array.FindIndex(images, images => images.Contains(imageFolder + "\\" + image_DRArt));
+                        
+                        if (temp_Index == -1)
+                        {
+                            //Image not found, so load from URL
+                            if (loaded_URL == false)
                             {
-                                pictureBox_Image.Load(url_DR_art);
-                                loaded_URL = true;
+                                 
+                                string url_DR_art = "https://www.play.net/bfe/DR-art/" + image_DRArt;
+
+                                if (url_DR_art != null)
+                                {
+                                    pictureBox_Image.Load(url_DR_art);
+                                    loaded_URL = true;
+                                }
+
+                                //Save the image to local for future use
+                                using (WebClient client = new WebClient())
+                                {
+                                    client.DownloadFile(url_DR_art, imageFolder + "\\" + image_DRArt);
+                                }
                             }
+
+                        }
+
+                        //Load Dr-Art image if it's found stored locally
+                        else
+                        {
+                            pictureBox_Image.Load(images[temp_Index]);
+                            loaded_URL = true;
                         }
                     }
 
-                    //Find Zone and Room Image in Images Folder and load into Plugin
+                    //Otherwise, find Zone and Room Image in Images Folder and load into Plugin
                     else if (images.Contains(imageFolder + "\\" + temp_room))
                     {
                         int temp_Index = Array.FindIndex(images, images => images.Contains(imageFolder + "\\" + temp_room));
                         pictureBox_Image.Load(images[temp_Index]);
                     }
 
-                    //Fallback - Find Default Zone Image and load from Images Folder into Plugin
+                    //Fallback - Find Default Zone Image and load from Images Folder into Plugin if no image is found
                     else if (images.Contains(imageFolder + "\\" + temp_zone))
                     {
                         int temp_Index = Array.FindIndex(images, images => images.Contains(imageFolder + "\\" + temp_zone));
@@ -169,7 +194,6 @@ namespace Landscape4Genie
                 MessageBox.Show("Unable to load Images from Image Directory", "Error: Landscape 4Genie Plugin",
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Error);
-                Clock.Stop();
             }
         } //Load Default Image
 

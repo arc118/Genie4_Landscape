@@ -230,7 +230,7 @@ namespace Landscape4Genie
                     {
                         //Set the Landscape Form Image Viewer to the current picture number found in xml stream
                         _form.image_DRArt = local_image_name;
-                        _host.SendText("#echo >Log Loading Image from URL: " + local_image_name);
+                        //_host.SendText("#echo >Log Loading Image from URL: " + local_image_name);
                     }
                 }
                 //If we dont find a picture number, disable showing DR-Art image from url, so it doesn't display Dr-Art images in form
