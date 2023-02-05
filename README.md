@@ -14,7 +14,9 @@ zoneid.jpg (example **"1.jpg"**): If no image containing a roomID is found, the 
 
 zoneid_roomid.jpg (example **"1_42.jpg"**): If an image is found with a matching zone and room ID per Automapper naming schema, it will load that specific room image into the plugin. As an example, 1_42.jpg is Zone 1 (The Crossing), Room 42 (The room directly outside the Crossing Bank). 
 
-### Note 3: You can add your own images to the \Images using the same naming convention! Images should be saved as a .jpg with 512X512 pixels. The plugin window is sized to show images at 512px X 512px. 
+### Note 3: A lot of the Zone Images in the \Images folder are blank (just a blank white background with the word blank). Feel free to generate your own! I'll update the images here when I find some I like.... but don't let that stop you.  
+
+### Note 4: Because, you can add your own images to the \Images using the same naming convention! Images should be saved as a .jpg with 512X512 pixels. The plugin window is sized to show images at 512px X 512px. 
 
 ## Basic Commands to use in Genie:
 
