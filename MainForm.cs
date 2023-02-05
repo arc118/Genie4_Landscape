@@ -118,7 +118,7 @@ namespace Landscape4Genie
                     string truncate_name = trackList.Find(trackList => trackList.map_index == Landscape._host.get_Variable("zoneid"))?.map_name.ToString();
                     
                     //Truncate Name so it fits in label on MainForm
-                    truncate_name.Truncate(24);
+                    truncate_name = truncate_name.Truncate(24);
                     label_mapName.Text = truncate_name; 
                                       
                     if (label_mapName.Text == null) label_mapName.Text = "Map Name (not found)"; 
