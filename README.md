@@ -19,3 +19,7 @@
 /landscape enableURL : Enables checking to see if there is a URL of the image on play.net for the specified room (Note: This is enabled by default)
 
 /landscape disableURL : Disables checking to see if there is a URL of the image on play.net, and instead loads images from the local \Images folder only. 
+
+## Screenshot
+
+![Screenshot](/Landscape_Screenshot.jpg)
