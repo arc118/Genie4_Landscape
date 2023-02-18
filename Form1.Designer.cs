@@ -33,11 +33,11 @@
             this.label_Zone = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label_Room = new System.Windows.Forms.Label();
-            this.pictureBox_Image = new System.Windows.Forms.PictureBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.label_mapName = new System.Windows.Forms.Label();
+            this.pictureBox_Image = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label_roomName = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.flowLayout_statusStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Image)).BeginInit();
             this.SuspendLayout();
@@ -102,14 +102,15 @@
             this.label_Room.Text = "0";
             this.label_Room.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // pictureBox_Image
+            // label5
             // 
-            this.pictureBox_Image.Location = new System.Drawing.Point(5, 35);
-            this.pictureBox_Image.Name = "pictureBox_Image";
-            this.pictureBox_Image.Size = new System.Drawing.Size(512, 512);
-            this.pictureBox_Image.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox_Image.TabIndex = 1;
-            this.pictureBox_Image.TabStop = false;
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(169, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(90, 20);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "Map Name:";
             // 
             // label_mapName
             // 
@@ -122,6 +123,15 @@
             this.label_mapName.TabIndex = 9;
             this.label_mapName.Text = "Unknown";
             this.label_mapName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // pictureBox_Image
+            // 
+            this.pictureBox_Image.Location = new System.Drawing.Point(5, 35);
+            this.pictureBox_Image.Name = "pictureBox_Image";
+            this.pictureBox_Image.Size = new System.Drawing.Size(512, 512);
+            this.pictureBox_Image.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox_Image.TabIndex = 1;
+            this.pictureBox_Image.TabStop = false;
             // 
             // label1
             // 
@@ -143,16 +153,6 @@
             this.label_roomName.TabIndex = 3;
             this.label_roomName.Text = "Unknown";
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(169, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(90, 20);
-            this.label5.TabIndex = 10;
-            this.label5.Text = "Map Name:";
-            // 
             // MainForm
             // 
             this.ClientSize = new System.Drawing.Size(519, 580);
@@ -161,6 +161,7 @@
             this.Controls.Add(this.pictureBox_Image);
             this.Controls.Add(this.flowLayout_statusStrip);
             this.Name = "MainForm";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.flowLayout_statusStrip.ResumeLayout(false);
             this.flowLayout_statusStrip.PerformLayout();
